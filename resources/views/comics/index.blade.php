@@ -34,7 +34,7 @@
                         <a href="{{ route('comics.show', ['comic' => $comic->id])}}" class="btn btn-primary">Visita</a>
                     </td>
                 </tr>
-            @endforeach
+            @endforeach 
         </tbody>
       </table>
   </table>
