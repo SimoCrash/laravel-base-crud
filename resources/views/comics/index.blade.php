@@ -9,8 +9,12 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Thumb</th>
             <th scope="col">Price</th>
             <th scope="col">Series</th>
+            <th scope="col">sale_date</th>
+            <th scope="col">type</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -19,8 +23,12 @@
                 <tr>
                     <td>{{ $comic->id }}</td>
                     <td>{{ $comic->title }}</td>
+                    <td>{{ $comic->description }}</td>
+                    <td>{{ $comic->thumb }}</td>
                     <td>{{ $comic->price }}</td>
                     <td>{{ $comic->series }}</td>
+                    <td>{{ $comic->sale_date }}</td>
+                    <td>{{ $comic->type }}</td>
                     <td>
                         {{-- <a href="/comics/{{ $comic->id }}" class="btn btn-primary">Visita</a> --}}
                         <a href="{{ route('comics.show', ['comic' => $comic->id])}}" class="btn btn-primary">Visita</a>
