@@ -31,8 +31,16 @@
                     <td>{{ $comic->type }}</td>
                     <td>
                         {{-- <a href="/comics/{{ $comic->id }}" class="btn btn-primary">Visita</a> --}}
-                        <a href="{{ route('comics.show', ['comic' => $comic->id])}}" class="btn btn-primary">Visita</a>
+                        <a href="{{ route('comics.show', ['comic' => $comic->id])}}" class="btn btn-primary">Visit</a>
                     </td>
+                    <td>
+                        {{-- <a href="/comics/{{ $comic->id }}" class="btn btn-primary">Visita</a> --}}
+                        <a href="{{ route('comics.edit', ['comic' => $comic->id])}}" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                      {{-- <a href="/comics/{{ $comic->id }}" class="btn btn-primary">Visita</a> --}}
+                      <a href="{{ route('comics.edit', ['comic' => $comic->id])}}" class="btn btn-danger">Delete</a>
+                  </td>
                 </tr>
             @endforeach 
         </tbody>
