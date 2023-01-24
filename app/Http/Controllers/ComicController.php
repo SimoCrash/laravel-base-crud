@@ -14,7 +14,11 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::all();
+        //per la creazione con tutti i file
+        // $comics = Comic::all();
+
+        //per la paginazione
+        $comics = Comic::paginate(6);
 
         return view('comics.index', compact('comics'));
     }
@@ -38,6 +42,8 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        //metodo 1: consigliato
         $comic = new Comic;
         $comic->title = $data['title'];
         $comic->description = $data['description'];
@@ -48,7 +54,16 @@ class ComicController extends Controller
         $comic->type = $data['type'];
         $comic->save();
 
-        return redirect()->route('comics.show', ['comic'=>$comic]);
+        //metodo 2: sconsigliato per motivi di sicurezza
+        //poi devo entrare in app/comic.php ed inserire..vai al file
+        // $comic = new Comic;
+        // $comic->fill($data);
+        // $comic->save();
+
+        //metodo 3: simile al 2, anche qui entrare in app/comic.php
+        // $comic = Comic::create($data);
+
+        return redirect()->route('comics.show', ['comic' => $comic])->with('create_success', $comic->id);
     }
 
     /**
@@ -94,7 +109,7 @@ class ComicController extends Controller
         $comic->type = $data['type'];
         $comic->update();
 
-        return redirect()->route('comics.show', ['comic'=>$comic]);
+        return redirect()->route('comics.show', ['comic' => $comic])->with('update_success', $comic->id);
     }
 
     /**
@@ -105,6 +120,12 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index')->with('delete_success', "il post $comic->title con id $comic->id è stato correttamente eliminato.");
+        
+        //altro metodo, che pero poi cambia in index.blade.php
+        // return redirect()->route('comics.index')->with('delete_success', $comic->id);
+
     }
 }

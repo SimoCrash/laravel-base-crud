@@ -16,7 +16,7 @@
         </div>
         <div class="mb-3">
             <label for="thumb" class="form-label">thumb</label>
-            <input type="text" class="form-control" aria-describedby="emailHelp" name="thumb" id="thumb" placeholder="thumn" value="{{ $comic->thumn }}"> 
+            <input type="url" class="form-control" aria-describedby="emailHelp" name="thumb" id="thumb" value="{{ $comic->thumb }}"> 
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">price</label>
